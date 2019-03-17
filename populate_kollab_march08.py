@@ -21,6 +21,7 @@ from kollab.models import UserProfile, Tag, Project, Membership
 from django.core.files import File
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password
 
 # Script which simulates typical data we need to save and retrieve
 
@@ -46,31 +47,34 @@ def populate():
         
     # website used to get lat lon: https://www.mapcoordinates.net/en
     # all lat lons refere to places around glasgow, starting from the centere & going out to dumbarton...dont know why I chose dumbarton...
+
+    hashedPassword = make_password("predictable", salt=None, hasher='default')
+
     users = [
         {"username" : "Ananya",
          "email": "Ananya@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Barak",
          "email": "Barak@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Charlie",
          "email": "Charlie@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Dav",
          "email": "Dav@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Ebo",
          "email": "Ebo@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Faye",
          "email": "Faye@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Gerry",
          "email": "Gerry@ex.com",
-         "password" : "predictable"},
+         "password" : hashedPassword},
          {"username" : "Harry",
          "email": "Harry@ex.com",
-         "password" : "predictable"}]
+         "password" : hashedPassword}]
          
     userProfiles =[
          {"selfinfo" : string,
