@@ -1,5 +1,9 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from kollab import views, apis
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
 
 urlpatterns = [
     ## for Views
@@ -16,5 +20,6 @@ urlpatterns = [
     url(r'^collaborators/$', views.collaborators, name='collaborators'),
     url(r'^collaborators/search/$', views.searchtags, name='searchtags'),
     url(r'^collaborators/search/(?P<tag_slug>[\w\-]+)/(?P<search_type>[\w\-]+)/$', views.embedded_search, name='embedded_search'),
-	url(r'^logoff/$', views.logoff, name='logoff')
+	url(r'^logoff/$', views.logoff, name='logoff'),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 ]
